@@ -1,3 +1,12 @@
+    "start": "node index.js",
+    "dev": "nodemon idnex.js"
+ 
+Hotels12345
+ 
+<db_password>
+ 
+"mongodb+srv://hotels:Hotels12345@cluster0.m7o9j.mongodb.net/"
+ 
 MONGODB_URL
  
 <db_password>
