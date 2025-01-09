@@ -6,7 +6,7 @@ const products = data.products;
 const express = require("express");
 const server = express();
 const morgan = require("morgan");
-
+console.log(process.env.DB_PASSWORD)
 //body Parse
 const bodyParser = require("body-parser");
 server.use(bodyParser.urlencoded({ extended: true }));
@@ -29,7 +29,31 @@ server.get("/product/:id", (req, res) => {
 
 server.post("/product", (req, res) => {
   console.log(req.body);
-  res.json({ type:'POST'});
+  res.json({ type: "POST" });
 });
 
+//update put
+server.put("/products/:id", (req, res) => {
+  const id = +req.params.id;
+  const productIndex = products.findIndex((p) => p.id === id);
+  products.splice(productIndex, 1, { ...req.body, id: id });
+  res.status(201).json();
+});
+//update with patch
+server.patch("/products/:id", (req, res) => {
+  const id = +req.params.id;
+  const productIndex = products.findIndex((p) => p.id === id);
+  const product = products[productIndex]
+  products.splice(productIndex, 1);
+  res.status(201).json(product);
+});
+
+//delete
+server.delete("/products/:id", (req, res) => {
+  const id = +req.params.id;
+  const productIndex = products.findIndex((p) => p.id === id);
+  products.splice(productIndex, 1, { ...req.body, id: id });
+  const product = products[productIndex]
+  res.status(201).json(product);
+});
 server.listen(3900, () => console.log("server run"));

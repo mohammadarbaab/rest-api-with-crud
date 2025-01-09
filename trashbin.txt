@@ -1,0 +1,152 @@
+MONGODB_URL
+ 
+<db_password>
+ 
+
+    const deletedPersonData = req.body;
+ 
+
+    const response= 
+ 
+tasteType
+ 
+./routes/menuRoutes
+ 
+MenuItem
+ 
+../models/MenuItem
+ 
+./routes/menuRoutes
+ 
+
+// const person = require("./models/Person");
+ 
+../models/MenuItem
+ 
+MenuItem
+ 
+menuItem
+ 
+menuItem
+ 
+./models/MenuItem
+ 
+
+const menuItem = require("../models/MenuItem");
+ 
+./routes/menuRoutes
+ 
+app
+ 
+menuItem
+ 
+menuItem
+ 
+./routes/menuItemRoutes
+ 
+/Person"
+ 
+Person
+ 
+./person.routes
+ 
+
+// get method for person data
+app.get("/person", async (req, res) => {
+  try {
+    const psData = await Person.find();
+    console.log("fetch data");
+    res.status(200).json(psData);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+// get method with params filter with end point
+app.get("/person/:workType", async (req, res) => {
+  try {
+    const workType = req.params.workType;
+    if (
+      workType === "chef" ||
+      workType === "manager" ||
+      workType === "waiter"
+    ) {
+      const personData = await Person.find({ work: workType });
+      console.log("data fetch sucsessfuly");
+      res.status(200).json(personData);
+    } else {
+      res.status(400).json({ error: "invalid work type" });
+    }
+  } catch (err) {
+    console.log("data can not be fetch");
+    res.status(400).send(err);
+  }
+});
+ 
+
+
+// post method for person data
+app.post("/person", async (req, res) => {
+  try {
+    const data = req.body;
+
+    const newPerson = new Person(data);
+
+    const savedPerson = await newPerson.save();
+    console.log("responnse done", savedPerson);
+    res.status(200).json(savedPerson);
+    console.log("data saved succesfully", savedPerson);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+ 
+person
+ 
+person
+ 
+app
+ 
+menu item method post api
+ 
+
+    console.log("menu item data", menuFetchData);
+ 
+savedMenuItem
+ 
+MenuItem
+ 
+/MenuItem.js
+ 
+/MenuItem
+ 
+
+    required:true,
+ 
+res.status(500).json("error", error);
+ 
+
+    console.log("")
+ 
+(error, person) => {
+      if (error) {
+        res.status(400).send(error);
+      } else {
+        res.send(person);
+      }
+    }
+ 
+
+    const newPerson = new Person(req.body);
+ 
+
+  // const data = req.body;
+ 
+
+  newPerson.name=data.name
+ 
+newPerson
+ 
+mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
+ 
+db.on("error", console.error.bind(console, "connection error:"));
+ 
