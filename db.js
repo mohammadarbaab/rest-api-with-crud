@@ -8,7 +8,7 @@ const mongoURL = process.env.MONGODB_URL;
 
 mongoose
   .connect(mongoURL, { useNewUrlParser: true })
-  .then(() => console.log("Connected to MongoDB"))
+  .then(() => console.log("MongoDb"))
   .catch((err) => console.error("Connection error:", err));
 
 const db = mongoose.connection;

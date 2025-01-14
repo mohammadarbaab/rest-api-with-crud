@@ -1,3 +1,21 @@
+await
+ 
+bcrypt.compare(password,user.password);
+ 
+ const user = await db.getUser(username);
+ 
+for
+ 
+Connected to MongoDB
+ 
+app.use
+ 
+(new Date().toISOString());
+ 
+waiter
+ 
+chef
+ 
 mongodb+srv://hotels:@cluster0.m7o9j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
  
 <db_password>

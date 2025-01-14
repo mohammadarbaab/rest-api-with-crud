@@ -11,7 +11,7 @@ const personSchema = new mongoose.Schema({
   },
   work: {
     type: String,
-    emun: ["chef", "waiter", "manager"],
+    emun: ["eng", "doctor", "chef"],
     required: true,
   },
   mobile: {
@@ -31,10 +31,17 @@ const personSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  username: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
 });
-
 
 // create person model
 
-const Person=mongoose.model('Person',personSchema);
+const Person = mongoose.model("Person", personSchema);
 module.exports = Person;
