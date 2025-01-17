@@ -1,3 +1,14 @@
+
+      return done(error);
+ 
+user.password === password ? true : false
+ 
+this.password
+ 
+heading
+ 
+failureRedirect: "/login"
+ 
 await
  
 bcrypt.compare(password,user.password);

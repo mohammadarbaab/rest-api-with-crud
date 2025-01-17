@@ -2,8 +2,7 @@ const express = require("express");
 const app = express();
 const db = require("./db");
 require("dotenv").config();
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
+const passport=require('./auth')
 
 const bodyParser = require("body-parser");
 
@@ -16,41 +15,25 @@ const logRequest = (req, res, next) => {
   );
   next();
 };
-app.use(logRequest);
 
-// passportjs local strategy
-passport.use(
-  new LocalStrategy(async (username, password, done) => {
-    try {
-      console.log("RECIVED Cred", username, password);
-      const user = await Person.findOne({ username: username });
-      if (!user) return done(null, false, { message: "Incorrect username" });
-      const isPasswordMatch = user.password === password ? true : false;
-      if (isPasswordMatch) {
-        return done(null, user);
-      } else {
-        return done(null, false, { message: "Incorrect password" });
-      }
-    } catch (err) {
-      return done(err);
-    }
-  })
-);
+app.use(logRequest);
 
 app.use(passport.initialize());
 
+const localAuthMiddleware = passport.authenticate("local", { session: false });
+
 // home path
-app.get("/", passport.authenticate('local',{session:false}),function (req, res) {
-  res.send("Hello World");
+app.get("/", localAuthMiddleware, function (req, res) {
+  res.send("Hello Guys This is Mein Bca Wala");
 });
 
 // import the person routes
 const personRoutes = require("./routes/personRoutes");
-app.use("/userData", personRoutes);
+app.use("/userData",localAuthMiddleware, personRoutes);
 
 // import the menuItem routes
 const menuItemRoutes = require("./routes/menuRoutes");
-const Person = require("./models/Person");
+
 app.use("/menuItem", menuItemRoutes);
 
 const PORT = process.env.PORT || 3000;
