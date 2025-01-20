@@ -1,3 +1,19 @@
+({ savedPerson, token });
+ 
+
+module.exports = jwtAuthMiddleware;
+ 
+
+    const token = jwt.sign({ user: userData }, process.env.SECRET_KEY, {
+ 
+
+const z=20;
+ 
+
+// z=30;
+
+console.log(z);
+ 
 
       return done(error);
  

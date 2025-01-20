@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Person = require("../models/Person");
+const { generateToken } = require("../jwt");
 
 // post method for person data
 router.post("/", async (req, res) => {
@@ -10,6 +11,11 @@ router.post("/", async (req, res) => {
     const newPerson = new Person(data);
 
     const savedPerson = await newPerson.save();
+
+    const token=generateToken(savedPerson.username)
+    console.log("token is ", token);
+    res.status(200).json({response:savedPerson,token:token})
+
     console.log("responnse done", savedPerson);
     res.status(200).json(savedPerson);
     console.log("data saved succesfully", savedPerson);

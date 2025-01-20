@@ -29,12 +29,13 @@ app.get("/", localAuthMiddleware, function (req, res) {
 
 // import the person routes
 const personRoutes = require("./routes/personRoutes");
-app.use("/userData",localAuthMiddleware, personRoutes);
+app.use("/userData", personRoutes);
 
 // import the menuItem routes
 const menuItemRoutes = require("./routes/menuRoutes");
 
 app.use("/menuItem", menuItemRoutes);
+
 
 const PORT = process.env.PORT || 3000;
 
